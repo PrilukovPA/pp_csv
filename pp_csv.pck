@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE pp_csv
 AS
-  /* тип коллекции заголовков CSV для хранения длинных заголовков,
-     вариант использования:
+  /* С‚РёРї РєРѕР»Р»РµРєС†РёРё Р·Р°РіРѕР»РѕРІРєРѕРІ CSV РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РґР»РёРЅРЅС‹С… Р·Р°РіРѕР»РѕРІРєРѕРІ,
+     РІР°СЂРёР°РЅС‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ:
       pp_csv.query2sheet(
         'SELECT EMPCODE AS "#", FIO AS "#" FROM employee WHERE ROWNUM < 10', 
         csv, 
@@ -11,17 +11,17 @@ AS
   TYPE captions_va IS VARRAY(100) OF VARCHAR2(32767);
 
   PROCEDURE query2sheet(
-    stmt IN VARCHAR2, -- текст SQL-запроса
-    sheet IN OUT CLOB, -- объект CSV-страницы
-    delimeter IN VARCHAR2 DEFAULT ';', -- разделитель CSV
-    column_captions IN captions_va DEFAULT NULL -- коллекция заголовков CSV
+    stmt IN VARCHAR2, -- С‚РµРєСЃС‚ SQL-Р·Р°РїСЂРѕСЃР°
+    sheet IN OUT CLOB, -- РѕР±СЉРµРєС‚ CSV-СЃС‚СЂР°РЅРёС†С‹
+    delimeter IN VARCHAR2 DEFAULT ';', -- СЂР°Р·РґРµР»РёС‚РµР»СЊ CSV
+    column_captions IN captions_va DEFAULT NULL -- РєРѕР»Р»РµРєС†РёСЏ Р·Р°РіРѕР»РѕРІРєРѕРІ CSV
     );
   
   PROCEDURE query2sheet(
-    ref_cursor IN OUT SYS_REFCURSOR, -- ссылка на курсор исходной выборки (открытый)
-    sheet IN OUT CLOB, -- объект CSV-страницы
-    delimeter VARCHAR2 DEFAULT ';', -- разделитель CSV
-    column_captions IN captions_va DEFAULT NULL -- коллекция заголовков CSV
+    ref_cursor IN OUT SYS_REFCURSOR, -- СЃСЃС‹Р»РєР° РЅР° РєСѓСЂСЃРѕСЂ РёСЃС…РѕРґРЅРѕР№ РІС‹Р±РѕСЂРєРё (РѕС‚РєСЂС‹С‚С‹Р№)
+    sheet IN OUT CLOB, -- РѕР±СЉРµРєС‚ CSV-СЃС‚СЂР°РЅРёС†С‹
+    delimeter VARCHAR2 DEFAULT ';', -- СЂР°Р·РґРµР»РёС‚РµР»СЊ CSV
+    column_captions IN captions_va DEFAULT NULL -- РєРѕР»Р»РµРєС†РёСЏ Р·Р°РіРѕР»РѕРІРєРѕРІ CSV
     );
 END;
 /
